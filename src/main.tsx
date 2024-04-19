@@ -11,11 +11,12 @@ import ErrorPage from './Pages/ErrorPage/ErrorPage';
 import AddContact from './Pages/AddContact/AddContact';
 import AllContacts from './Pages/AllContacts/AllContacts';
 import ThemeProvider from './Providers/ThemePovider';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Login from './Pages/Auth/Login';
 import Signup from './Pages/Auth/Signup';
 import EditContact from './Pages/EditContact/EditContact';
 import Home from './Pages/Home/Home';
+import PrivateRoute from './Providers/PrivateRoute';
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -37,15 +38,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/addContact",
-        element: <AddContact />
+        element: <PrivateRoute><AddContact /></PrivateRoute>
       },
       {
         path: "/allContacts",
-        element: <AllContacts />
+        element: <PrivateRoute><AllContacts/></PrivateRoute>
       },
       {
         path: "/editContact/:id",
-        element: <EditContact />
+        element: <PrivateRoute><EditContact /></PrivateRoute>
       }
     ]
   },
