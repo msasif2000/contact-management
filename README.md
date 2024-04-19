@@ -1,31 +1,84 @@
-# React + TypeScript + Vite
+# LumiJobs - Where Opportunities Meet Expertise
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Live Link : https://cellio-contact.web.app/
 
-Currently, two official plugins are available:
+##Featues
+- **Add Contact:**
+  Add your desired contact with information.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Edit/Delete Contact:**
+  You can edit/update/delete your contact.
+  
+- **Bookmark Contact:**
+  Bookmark your favorite contact
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technology Used
 
-- Configure the top-level `parserOptions` property like this:
+- **Frontend:**
+  - React.js for the user interface.
+  - React Hook Form for efficient form handling.
+  - Axios for making HTTP requests.
+  - TypeScript for a strongly typed codebase.
+  - React Router for navigation.
+  - Tailwind CSS for styling.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- **Backend:**
+  - Node.js for server-side development.
+  - Express.js as the web application framework.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# contact-management
+- **Database:**
+  - MongoDB
+
+- **Authentication:**
+  - Firebase Authentication for secure user authentication.
+
+## Setup Environment
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/msasif2000/contact-management
+    ```
+
+2. Install dependencies:
+
+    ```bash
+    cd Project-name
+    npm install
+    ```
+
+3. Set up Firebase:
+   - Create a Firebase project and obtain configuration details.
+   - Create a `.env` file in the root directory and add Firebase configuration:
+
+     ```env
+     VITE_APIKEY=xxxxxxxxxxxxxxxxx
+     VITE_AUTHDOMAIN=xxxxxxxxxxxxxxxxx
+     VITE_PROJECTID=xxxxxxxxxxxxxxxxxx
+     VITE_STORAGEBUCKET=xxxxxxxxxxxxxxx
+     VITE_MESSAGINGSENDERID=xxxxxxxxxxxxxxxxxx
+     VITE_APPID=1:xxxxxxxxxxxxxxxxxxxxxxxxxx
+     ```
+
+4. Your `firebase.config.ts` file should look like this:
+
+    ```typescript
+    const firebaseConfig: FirebaseConfig = {
+     apiKey: import.meta.env.VITE_APIKEY,
+     authDomain: import.meta.env.VITE_AUTHDOMAIN,
+     projectId: import.meta.env.VITE_PROJECTID,
+     storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+     messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+     appId: import.meta.env.VITE_APPID,
+    };
+    ```
+
+5. Run the application:
+
+    ```bash
+    npm start
+    ```
+---
+- Backend : https://github.com/msasif2000/contact-management-server
+---
