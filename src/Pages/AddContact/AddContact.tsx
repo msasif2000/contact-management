@@ -14,17 +14,21 @@ interface ContactData {
     image: string;
 }
 const AddContact: React.FC = () => {
-    const { loading, setLoading, userRefetch } = useAuth();
+    const { user, loading, setLoading, userRefetch } = useAuth();
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
     const {
         register,
         handleSubmit,
     } = useForm<ContactData>();
-
     const onSubmit = async (data: ContactData) => {
         // console.log(data);
-        axiosPublic.post("/addContact", data)
+
+        const totalData = {
+            ...data, 
+            userEmail : user?.email
+        }
+        axiosPublic.post("/addContact", totalData)
             .then(res => {
                 if (res.data) {
                     toast.success("Contact added successfully", {
@@ -95,7 +99,7 @@ const AddContact: React.FC = () => {
                             </div>
                             <div className="form-control w-full">
                                 <label htmlFor="address" className="font-semibold text-lg ">
-                                Address
+                                    Address
                                 </label>
                                 <input
                                     type="text"
@@ -130,7 +134,7 @@ const AddContact: React.FC = () => {
                     </div>
                 </div>
                 <div className="flex flex-1">
-                    <img src={cntc} alt="" className="w-full"/>
+                    <img src={cntc} alt="" className="w-full" />
                 </div>
                 <ToastContainer />
             </div>

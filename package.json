@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.29.2",
+    "aos": "^2.3.4",
     "axios": "^1.6.8",
     "firebase": "^10.11.0",
     "localforage": "^1.10.0",
@@ -23,6 +24,7 @@
     "sort-by": "^0.0.2"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@types/react-icons": "^3.0.0",

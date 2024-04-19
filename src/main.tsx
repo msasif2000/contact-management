@@ -14,6 +14,7 @@ import ThemeProvider from './Providers/ThemePovider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Login from './Pages/Auth/Login';
 import Signup from './Pages/Auth/Signup';
+import EditContact from './Pages/EditContact/EditContact';
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -21,6 +22,14 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/login",
+        element: <Login />
+      },
+      {
+        path: "/signup",
+        element: <Signup />
+      },
       {
         path: "/addContact",
         element: <AddContact />
@@ -30,12 +39,8 @@ const router = createBrowserRouter([
         element: <AllContacts />
       },
       {
-        path: "/login",
-        element: <Login />
-      },
-      {
-        path: "/signup",
-        element: <Signup />
+        path:"/editContact/:id", 
+        element: <EditContact/>
       }
     ]
   },

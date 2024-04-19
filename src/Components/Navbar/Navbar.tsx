@@ -21,7 +21,7 @@ const Navbar = () => {
                 <Link to="/" className="text-xl flex items-center gap-2">
                     <img src={logo} alt="" className="h-16" />
                     <div className="flex flex-col justify-start">
-                        <span className="text-2xl">Cellio</span> <span className="text-[12px] text-base-400 text-tertiary">Contact Management</span>
+                        <span className="text-2xl">Cellio</span>
                     </div>
                 </Link>
             </div>
