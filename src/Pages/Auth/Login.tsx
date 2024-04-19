@@ -70,7 +70,7 @@ const Login: React.FC = () => {
                                 <input
                                     type="email"
                                     {...register("email", { required: "Email is required" })}
-                                    placeholder="Example@gmail.com"
+                                    placeholder="example@gmail.com"
                                     className="input-md md:input-lg rounded-lg border-b-4 hover:border-b-primary duration-500 outline-none bg-[#F7FBFF]"
                                 />
                             </div>

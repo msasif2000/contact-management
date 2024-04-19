@@ -29,7 +29,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/login"> <button className="btn btn-sm bg-primary hover:bg-tertiary hover:text-white"><FcExternal className="rotate-90 text-3xl" />LOGIN</button></Link>
+                <Link to="/login"> <button className="btn bg-primary hover:bg-tertiary hover:text-white"><FcExternal className="rotate-90 text-3xl" />LOGIN</button></Link>
             </div>
         </div>
     );
