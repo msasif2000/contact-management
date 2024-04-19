@@ -10,6 +10,7 @@ import "aos/dist/aos.css";
 import edit from "../../assets/images/edit.png"
 import bin from "../../assets/images/bin.png"
 import save from "../../assets/images/save.png"
+import saved from "../../assets/images/saved.png"
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 interface contact {
@@ -19,12 +20,13 @@ interface contact {
     phone: string;
     address: string;
     image: string;
+    bookmarked: boolean;
 }
 interface ContactCardProps {
     contact: contact;
 }
 const ContactCard: React.FC<ContactCardProps> = ({ contact }) => {
-    const { _id, name, email, phone, address, image } = contact;
+    const { _id, name, email, phone, address, image, bookmarked } = contact;
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
 
@@ -51,7 +53,36 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact }) => {
             })
     }
 
-    
+    const handleSave = (_id: string) => {
+        axiosPublic.patch(`/saveContact/${_id}`)
+            .then(res => {
+                if (res.data.message === 'true') {
+                    toast.success("Contact saved successfully", {
+                        position: "top-center",
+                        hideProgressBar: true,
+                        autoClose: 2000,
+                    });
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+    const handleUnSave = (_id: string) => {
+        axiosPublic.patch(`/removeBookmark/${_id}`)
+            .then(res => {
+                if (res.data.message === 'true') {
+                    toast.success("Contact saved successfully", {
+                        position: "top-center",
+                        hideProgressBar: true,
+                        autoClose: 2000,
+                    });
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
     useEffect(() => {
         Aos.init();
@@ -61,10 +92,15 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact }) => {
         <div data-aos="fade-right" data-aos-duration="2500" className="rounded-lg">
             <div className="flex items-center justify-start rounded-t-2xl gap-4 bg-tertiary p-4 w-full pb-12 h-1/2">
                 <h2 className="text-2xl">{name}</h2>
-                <div className="flex gap-2 justify-center px-1">
+                <div className="flex gap-2 justify-center px-1 items-center">
                     <img src={edit} onClick={() => handleEdit(_id)} alt="" className="h-8 bg-white p-2 rounded-lg" />
                     <img src={bin} onClick={() => handleDelete(_id)} alt="" className="h-8 bg-white p-2 rounded-lg" />
-                    <img src={save} onClick={() => handleSave(_id)} alt="" className="h-8 bg-white p-2 rounded-lg" />
+                    {
+                        bookmarked ? 
+                        <img src={saved} onClick={() => handleUnSave(_id)} alt="" className="h-8 bg-primary p-2 rounded-lg" />
+                        :
+                        <img src={save} onClick={() => handleSave(_id)} alt="" className="h-8 bg-white p-2 rounded-lg" />
+                    }
                 </div>
             </div>
             <div className="flex items-center bg-secondary relative rounded-b-2xl text-white pt-4">

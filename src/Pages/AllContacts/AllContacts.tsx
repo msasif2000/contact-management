@@ -10,6 +10,7 @@ interface contactData {
     phone: string;
     address: string;
     image: string;
+    bookmarked: boolean;
 }
 const AllContacts = () => {
     const [contacts, setContacts] = useState<contactData[]>([]);
