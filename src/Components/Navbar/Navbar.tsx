@@ -1,8 +1,10 @@
-import { NavLink } from "react-router-dom";
-
+import { FcExternal } from "react-icons/fc";
+import logo from "../../assets/images/logo.png"
+import { Link, NavLink } from "react-router-dom";
+import "./Navbar.css";
 const Navbar = () => {
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar max-w-screen-2xl mx-auto px-4 lg:px-16">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -13,7 +15,12 @@ const Navbar = () => {
                         <li><NavLink to="allContacts">All Contact</NavLink></li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <Link to="/" className="text-xl flex items-center gap-2">
+                    <img src={logo} alt="" className="h-16" />
+                    <div className="flex flex-col justify-start">
+                        <span className="text-2xl">Cellio</span> <span className="text-[12px] text-base-400 text-tertiary">Contact Management</span>
+                    </div>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -22,7 +29,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <Link to="/login"> <button className="btn btn-sm bg-primary hover:bg-tertiary text-white"><FcExternal className="rotate-90 text-3xl" />LOGIN</button></Link>
             </div>
         </div>
     );

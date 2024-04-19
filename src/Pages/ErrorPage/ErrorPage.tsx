@@ -6,7 +6,7 @@ const ErrorPage = () => {
         <div className="flex flex-col items-center justify-center gap-2 p-8">
             <img src={err} alt="" className="lg:h-[550px] 2xl:h-[700px]"/>
             <div>
-                    <Link to="/"><button className="btn bg-sky-300">Back to Home</button></Link>    
+                    <Link to="/"><button className="btn bg-blue-700 text-white">Back to Home</button></Link>    
             </div>
         </div>
     );

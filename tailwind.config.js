@@ -5,7 +5,14 @@ module.exports = {
 
   
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primary': '#FFCC15',
+        'secondary': '#4469A6',
+        'tertiary': '#007CFF',
+      },
+
+    },
   },
   plugins: [require("daisyui"),],
 }

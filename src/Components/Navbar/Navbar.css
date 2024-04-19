@@ -1,0 +1,10 @@
+.navbar .menu li a:hover {
+    background-color: rgba(0, 0, 0, 0) !important;
+    text-decoration: underline;
+}
+
+.navbar a.active {
+    background-color: rgba(0, 0, 0, 0) !important;
+    color: #4469A6 !important;
+    font-weight: 400 !important;
+}
