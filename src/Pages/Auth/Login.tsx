@@ -71,7 +71,7 @@ const Login: React.FC = () => {
                                     type="email"
                                     {...register("email", { required: "Email is required" })}
                                     placeholder="example@gmail.com"
-                                    className="input-md md:input-lg rounded-lg border-b-4 hover:border-b-primary duration-500 outline-none bg-[#F7FBFF]"
+                                    className="input-md rounded-lg border-b-4 hover:border-b-primary duration-500 outline-none bg-[#F7FBFF]"
                                 />
                             </div>
                             <div className="form-control w-full relative">
@@ -90,7 +90,7 @@ const Login: React.FC = () => {
                                         },
                                     })}
                                     placeholder="at least 6 character"
-                                    className="input-md md:input-lg border-b-4 outline-none rounded-lg  bg-[#F7FBFF] hover:border-b-primary duration-500"
+                                    className="input-md border-b-4 outline-none rounded-lg  bg-[#F7FBFF] hover:border-b-primary duration-500"
                                 />
                                 <span
                                     className="absolute top-[44px] md:top-[48px] md:text-lg right-3 cursor-pointer lg:text-2xl"

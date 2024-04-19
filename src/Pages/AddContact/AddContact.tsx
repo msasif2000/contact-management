@@ -6,26 +6,27 @@ import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import cntc from "../../assets/images/contct.jpg";
 
-interface contactData {
+interface ContactData {
     name: string;
     email: string;
     phone: string;
     address: string;
     image: string;
 }
-const AddContact = () => {
+const AddContact: React.FC = () => {
     const { loading, setLoading, userRefetch } = useAuth();
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
     const {
         register,
         handleSubmit,
-    } = useForm<contactData>();
+    } = useForm<ContactData>();
 
-    const onSubmit = async (data: contactData) => {
+    const onSubmit = async (data: ContactData) => {
+        // console.log(data);
         axiosPublic.post("/addContact", data)
             .then(res => {
-                if (res.data.insertedId) {
+                if (res.data) {
                     toast.success("Contact added successfully", {
                         position: "top-center",
                         hideProgressBar: true,
@@ -117,7 +118,7 @@ const AddContact = () => {
                             <button
                                 type="submit"
                                 value=""
-                                className="btn w-full bg-secondary text-white hover:bg-primary duration-500 "
+                                className="btn w-full bg-secondary text-white hover:bg-primary hover:text-black duration-500 "
                             >
                                 {loading ? (
                                     <span className="loading loading-dots loading-md"></span>

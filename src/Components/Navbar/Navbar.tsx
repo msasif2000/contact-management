@@ -1,8 +1,11 @@
+import { GrUserManager } from "react-icons/gr"; 
 import { FcExternal } from "react-icons/fc";
 import logo from "../../assets/images/logo.png"
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
+import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
+    const { user, logOut, photo } = useAuth();
     return (
         <div className="navbar max-w-screen-2xl mx-auto px-4 lg:px-16">
             <div className="navbar-start">
@@ -29,7 +32,26 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/login"> <button className="btn bg-primary hover:bg-tertiary hover:text-white"><FcExternal className="rotate-90 text-3xl" />LOGIN</button></Link>
+                {
+                    user ? (
+                        <div className="flex items-center gap-2">
+                            {
+                                photo ? 
+                                <img src={photo} alt=" "/>
+                                :
+                                <GrUserManager className="text-5xl rounded-full p-1 bg-secondary text-white"/>
+                            }
+                            <div className="flex flex-col justify-center items-start">
+                                <span className="text-sm">{user?.name}</span>
+                                <span className="text-xs text-base-400">{user?.email}</span>
+                            </div>
+                            <button onClick={() => logOut()} className="btn bg-primary hover:bg-tertiary hover:text-white"><FcExternal className="-rotate-90 text-3xl" />LOGOUT</button>
+                        </div>
+
+                    ) : (
+                        <Link to="/login"> <button className="btn bg-primary hover:bg-tertiary hover:text-white"><FcExternal className="rotate-90 text-3xl" />LOGIN</button></Link>
+                    )
+                }
             </div>
         </div>
     );

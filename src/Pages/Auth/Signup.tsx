@@ -92,32 +92,32 @@ const Signup: React.FC = () => {
                             className="space-y-3 w-full border-2 p-4 rounded-lg border-secondary"
                         >
                             <div className="form-control w-full">
-                                <label htmlFor="name" className="text-xl font-semibold py-1">
+                                <label htmlFor="name" className="font-semibold py-1">
                                     Name
                                 </label>
                                 <input
                                     type="text"
                                     {...register("name", { required: "Name is required" })}
                                     placeholder="Your Name"
-                                    className="input-md md:input-lg rounded-lg border-b-4 hover:border-b-primary duration-500 outline-none bg-[#F7FBFF]"
+                                    className="input-md rounded-lg border-b-4 hover:border-b-primary duration-500 outline-none bg-[#F7FBFF]"
                                 />
                             </div>
 
                             <div className="form-control w-full">
-                                <label htmlFor="email" className="text-xl font-semibold py-1">
+                                <label htmlFor="email" className="font-semibold py-1">
                                     Email
                                 </label>
                                 <input
                                     type="email"
                                     {...register("email", { required: "Email is required" })}
                                     placeholder="example@gmail.com"
-                                    className="input-md md:input-lg rounded-lg border-b-4 hover:border-b-primary duration-500 outline-none bg-[#F7FBFF]"
+                                    className="input-md rounded-lg border-b-4 hover:border-b-primary duration-500 outline-none bg-[#F7FBFF]"
                                 />
                             </div>
                             <div className="form-control w-full relative">
                                 <label
                                     htmlFor="password"
-                                    className="text-xl font-semibold py-1"
+                                    className="font-semibold py-1"
                                 >
                                     Password
                                 </label>
@@ -133,7 +133,7 @@ const Signup: React.FC = () => {
                                         },
                                     })}
                                     placeholder="at least 6 character long"
-                                    className="input-md md:input-lg rounded-lg border-b-4 hover:border-b-primary duration-500 outline-none bg-[#F7FBFF] mb-4"
+                                    className="input-md rounded-lg border-b-4 hover:border-b-primary duration-500 outline-none bg-[#F7FBFF] mb-4"
                                 />
                                 <span
                                     className="absolute top-[50px] md:top-[55px] md:text-lg right-3 cursor-pointer lg:text-2xl"
@@ -144,6 +144,17 @@ const Signup: React.FC = () => {
                                 {errors.password && (
                                     <p className="text-red-500">{errors.password.message}</p>
                                 )}
+                            </div>
+                            <div className="form-control w-full">
+                                <label htmlFor="photo" className="font-semibold py-1">
+                                    Photo URL
+                                </label>
+                                <input
+                                    type="text"
+                                    {...register("photo")}
+                                    placeholder="https://example.com/image.jpg"
+                                    className="input-md rounded-lg border-b-4 hover:border-b-primary duration-500 outline-none bg-[#F7FBFF]"
+                                />
                             </div>
                             {
                                 <button
