@@ -23,10 +23,9 @@ const EditContact = () => {
     const { loading, setLoading, userRefetch } = useAuth();
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit } = useForm<ContactData>();
-
+    const id = contact?._id;
     const onSubmit: SubmitHandler<ContactData> = async (data: ContactData) => {
-        console.log(contact?._id);
-        axiosPublic.patch(`/updateContact/${contact?.id}`, data)
+        axiosPublic.patch(`/updateContact/${id}`, data)
             .then(res => {
                 if (res.data) {
                     toast.success("Contact updated successfully", {
@@ -51,7 +50,7 @@ const EditContact = () => {
     };
     return (
         <div>
-            <div className="lg:max-w-screen-lg 2xl:max-w-screen-xl min-h-screen flex mx-auto justify-center lg:px-3 md:px-12 px-8 mb-4 mt-8">
+            <div className="lg:max-w-screen-lg 2xl:max-w-screen-xl flex mx-auto justify-center lg:px-3 md:px-12 px-8 mb-4 mt-8">
                 {/* form div */}
                 <div className="flex flex-col items-center justify-center flex-1 w-full">
                     <div className="w-full md:px-10 lg:px-4 2xl:px-12">

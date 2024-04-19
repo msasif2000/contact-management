@@ -33,23 +33,25 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact }) => {
     }
 
     const handleDelete = (_id: string) => {
-        console.log(_id);
         axiosPublic.delete(`/deleteContact/${_id}`)
             .then(res => {
-                if (res.data) {
+                if (res.data.message === 'true') {
                     toast.success("Contact deleted successfully", {
                         position: "top-center",
                         hideProgressBar: true,
                         autoClose: 2000,
                     });
-                    navigate("/allContacts");
                 }
+                setTimeout(() => {
+                    navigate("/allContacts");
+                })
             })
             .catch(err => {
                 console.log(err);
             })
-
     }
+
+    
 
     useEffect(() => {
         Aos.init();
@@ -57,24 +59,24 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact }) => {
 
     return (
         <div data-aos="fade-right" data-aos-duration="2500" className="rounded-lg">
-            <div className="flex items-center justify-start rounded-t-2xl gap-4 bg-tertiary p-4 w-full">
+            <div className="flex items-center justify-start rounded-t-2xl gap-4 bg-tertiary p-4 w-full pb-12 h-1/2">
                 <h2 className="text-2xl">{name}</h2>
-                <div className="flex gap-2 justify-center">
-                    <img src={edit} onClick={() => handleEdit(_id)} alt="" className="h-8 bg-white p-1 rounded-lg" />
-                    <img src={bin} onClick={() => handleDelete(_id)} alt="" className="h-8 bg-white p-1 rounded-lg" />
-                    <img src={save} alt="" className="h-8 bg-white p-1 rounded-lg" />
+                <div className="flex gap-2 justify-center px-1">
+                    <img src={edit} onClick={() => handleEdit(_id)} alt="" className="h-8 bg-white p-2 rounded-lg" />
+                    <img src={bin} onClick={() => handleDelete(_id)} alt="" className="h-8 bg-white p-2 rounded-lg" />
+                    <img src={save} onClick={() => handleSave(_id)} alt="" className="h-8 bg-white p-2 rounded-lg" />
                 </div>
             </div>
-            <div className="flex items-center bg-secondary relative rounded-b-2xl text-white">
+            <div className="flex items-center bg-secondary relative rounded-b-2xl text-white pt-4">
                 <div data-aos="fade-up" data-aos-duration="3000" className="w-full p-4">
                     <p className="flex items-center gap-1"><BiPhoneCall className="text-primary text-xl" />{phone}</p>
                     <p className="flex items-center gap-1"><BiMailSend className="text-primary text-xl" />{email}</p>
                     <p className="flex items-center gap-1"><ImLocation className="text-primary text-xl" />{address}</p>
                 </div>
-                <div data-aos="fade-left" data-aos-duration="3000" className="-top-6 absolute right-2">
+                <div data-aos="fade-left" data-aos-duration="3000" className="-top-8 absolute right-2">
                     {
                         image ?
-                            <img src={image} alt="" className="h-24 rounded-full bg-primary p-1" />
+                            <img src={image} alt="" className="h-24 w-24 rounded-full bg-primary p-1" />
                             :
                             <GrUserManager className="h-24 w-24 rounded-full bg-primary p-1" />
                     }

@@ -17,13 +17,13 @@ const AddContact: React.FC = () => {
     const { user, loading, setLoading, userRefetch } = useAuth();
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
-    const { register, handleSubmit } = useForm<ContactData>();
+    const {register,handleSubmit} = useForm<ContactData>();
     const onSubmit = async (data: ContactData) => {
         // console.log(data);
 
         const totalData = {
-            ...data,
-            userEmail: user?.email
+            ...data, 
+            userEmail : user?.email
         }
         axiosPublic.post("/addContact", totalData)
             .then(res => {
@@ -51,7 +51,7 @@ const AddContact: React.FC = () => {
 
     return (
         <div>
-            <div className="lg:max-w-screen-lg 2xl:max-w-screen-xl min-h-screen flex mx-auto justify-center lg:px-3 md:px-12 px-8 mb-4 mt-8">
+            <div className="lg:max-w-screen-lg 2xl:max-w-screen-xl flex mx-auto justify-center lg:px-3 md:px-12 px-8 mb-4 mt-8">
                 {/* form div */}
                 <div className="flex flex-col items-center justify-center flex-1 w-full">
                     <div className="w-full md:px-10 lg:px-4 2xl:px-12">
@@ -61,7 +61,7 @@ const AddContact: React.FC = () => {
                             </h1>
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-3  border-2 p-4 rounded-lg border-secondary">
-                            <div className="form-control w-full">
+                            <div  className="form-control w-full">
                                 <label htmlFor="name" className="font-semibold text-lg ">
                                     Name
                                 </label>
