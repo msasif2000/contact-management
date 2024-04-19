@@ -1,4 +1,4 @@
-import React from 'react'
+
 import ReactDOM from 'react-dom/client'
 import './index.css'
 
@@ -10,7 +10,11 @@ import App from './App';
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
 import AddContact from './Pages/AddContact/AddContact';
 import AllContacts from './Pages/AllContacts/AllContacts';
-
+import ThemeProvider from './Providers/ThemePovider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Login from './Pages/Auth/Login';
+import Signup from './Pages/Auth/Signup';
+const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,15 +30,21 @@ const router = createBrowserRouter([
         element: <AllContacts />
       },
       {
-        path: "/contact",
-        element: <h1>Contact</h1>
+        path: "/login",
+        element: <Login />
+      },
+      {
+        path: "/signup",
+        element: <Signup />
       }
     ]
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+  <QueryClientProvider client={queryClient}>
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  </QueryClientProvider>
 )

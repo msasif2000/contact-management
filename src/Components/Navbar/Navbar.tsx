@@ -23,13 +23,13 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    <li><NavLink to="addContact">Add Contact</NavLink></li>
+                <ul className="menu menu-horizontal px-1 text-base">
+                    <li><NavLink to="addContact" className="">Add Contact</NavLink></li>
                     <li><NavLink to="allContacts">All Contact</NavLink></li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/login"> <button className="btn btn-sm bg-primary hover:bg-tertiary text-white"><FcExternal className="rotate-90 text-3xl" />LOGIN</button></Link>
+                <Link to="/login"> <button className="btn btn-sm bg-primary hover:bg-tertiary hover:text-white"><FcExternal className="rotate-90 text-3xl" />LOGIN</button></Link>
             </div>
         </div>
     );
