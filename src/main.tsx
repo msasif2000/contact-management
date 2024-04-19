@@ -15,6 +15,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Login from './Pages/Auth/Login';
 import Signup from './Pages/Auth/Signup';
 import EditContact from './Pages/EditContact/EditContact';
+import Home from './Pages/Home/Home';
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        path: "/",
+        element: <Home />
+
+      }, {
         path: "/login",
         element: <Login />
       },
@@ -39,8 +44,8 @@ const router = createBrowserRouter([
         element: <AllContacts />
       },
       {
-        path:"/editContact/:id", 
-        element: <EditContact/>
+        path: "/editContact/:id",
+        element: <EditContact />
       }
     ]
   },

@@ -46,7 +46,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact }) => {
                 }
                 setTimeout(() => {
                     navigate("/allContacts");
-                })
+                }, 2000)
             })
             .catch(err => {
                 console.log(err);
@@ -57,12 +57,15 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact }) => {
         axiosPublic.patch(`/saveContact/${_id}`)
             .then(res => {
                 if (res.data.message === 'true') {
-                    toast.success("Contact saved successfully", {
+                    toast.success("Bookmark added successfully", {
                         position: "top-center",
                         hideProgressBar: true,
                         autoClose: 2000,
                     });
                 }
+                setTimeout(() => {
+                    navigate("/allContacts");
+                }, 2000)
             })
             .catch(err => {
                 console.log(err);
@@ -72,12 +75,15 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact }) => {
         axiosPublic.patch(`/removeBookmark/${_id}`)
             .then(res => {
                 if (res.data.message === 'true') {
-                    toast.success("Contact saved successfully", {
+                    toast.success("Bookmark removed successfully", {
                         position: "top-center",
                         hideProgressBar: true,
                         autoClose: 2000,
                     });
                 }
+                setTimeout(() => {
+                    navigate("/allContacts");
+                }, 2000)
             })
             .catch(err => {
                 console.log(err);
@@ -99,7 +105,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact }) => {
                         bookmarked ? 
                         <img src={saved} onClick={() => handleUnSave(_id)} alt="" className="h-8 bg-primary p-2 rounded-lg" />
                         :
-                        <img src={save} onClick={() => handleSave(_id)} alt="" className="h-8 bg-white p-2 rounded-lg" />
+                        <img src={save} onClick={() => handleSave(_id)} alt="" className="h-9 bg-white p-2 rounded-lg" />
                     }
                 </div>
             </div>
