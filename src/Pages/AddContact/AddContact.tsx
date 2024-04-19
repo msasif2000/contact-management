@@ -17,16 +17,13 @@ const AddContact: React.FC = () => {
     const { user, loading, setLoading, userRefetch } = useAuth();
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
-    const {
-        register,
-        handleSubmit,
-    } = useForm<ContactData>();
+    const { register, handleSubmit } = useForm<ContactData>();
     const onSubmit = async (data: ContactData) => {
         // console.log(data);
 
         const totalData = {
-            ...data, 
-            userEmail : user?.email
+            ...data,
+            userEmail: user?.email
         }
         axiosPublic.post("/addContact", totalData)
             .then(res => {
@@ -127,7 +124,7 @@ const AddContact: React.FC = () => {
                                 {loading ? (
                                     <span className="loading loading-dots loading-md"></span>
                                 ) : (
-                                    "Add Contact"
+                                    "Save Contact"
                                 )}
                             </button>
                         </form>
