@@ -7,19 +7,23 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from './App';
+import ErrorPage from './Pages/ErrorPage/ErrorPage';
+import AddContact from './Pages/AddContact/AddContact';
+import AllContacts from './Pages/AllContacts/AllContacts';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
-        element: <h1>Home</h1>
+        path: "/addContact",
+        element: <AddContact />
       },
       {
-        path: "/about",
-        element: <h1>About</h1>
+        path: "/allContacts",
+        element: <AllContacts />
       },
       {
         path: "/contact",
