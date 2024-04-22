@@ -1,3 +1,4 @@
+import { BsHandIndexThumbFill } from "react-icons/bs"; 
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
@@ -43,8 +44,9 @@ const MyContacts = () => {
                         </div>
                     </div>
                 ) :
-                    <div>
-                        <Link to="/login"><button className="btn bg-primary hover:bg-tertiary">Get Started</button></Link>
+                    <div className="lg:max-w-screen-lg 2xl:max-w-screen-xl mx-auto  lg:px-3 md:px-12 px-8 mb-16 mt-16 flex justify-between items-center">
+                        <p className="flex items-center gap-2">You are Log out. Please Sign in here <BsHandIndexThumbFill  className="text-3xl rotate-90"/></p>
+                        <Link to="/login"><button className="btn bg-primary hover:bg-tertiary">Login Now</button></Link>
                     </div>
             }
         </div>
